@@ -7,3 +7,6 @@ services:
     restart: unless-stopped
     environment:
       - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - WELCOME_CHANNEL_ID=${WELCOME_CHANNEL_ID}
+      - TICKET_CATEGORY_ID=${TICKET_CATEGORY_ID}
+      - SUPPORT_ROLE_ID=${SUPPORT_ROLE_ID}
