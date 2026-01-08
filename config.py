@@ -33,9 +33,6 @@ Thumblab is a tool I made because thumbnails were always a pain — either too e
 You can try it here:
 https://thumblab.app
 
-If you want to understand how it works (or what it can / can’t do yet), the docs are here:
-https://docs.thumblab.app
-https://discord.thumblab.app
 
 If you have any question or feedback, you can just open a ticket on the server. I read everything."""
 )

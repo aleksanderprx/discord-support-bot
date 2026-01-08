@@ -391,3 +391,21 @@ async def setup(bot):
                 continue  # Skip channels we can't read
             except Exception as e:
                 print(f"Error checking channel {channel.name}: {e}")
+        
+        # Also specifically scan the ticket category for existing tickets
+        ticket_category = guild.get_channel(TICKET_CATEGORY_ID)
+        if ticket_category:
+            for channel in ticket_category.text_channels:
+                if channel.name.startswith("ticket-"):
+                    try:
+                        # Look for close button messages in this ticket channel
+                        async for message in channel.history(limit=10):
+                            if message.components:
+                                for component in message.components:
+                                    for child in component.children:
+                                        if hasattr(child, 'custom_id') and child.custom_id == "close_ticket_button":
+                                            view = TicketCloseView(bot, channel)
+                                            bot.add_view(view)
+                                            print(f"Registered persistent view for close button in ticket channel {channel.name}")
+                    except Exception as e:
+                        print(f"Error checking ticket channel {channel.name}: {e}")
